@@ -1,13 +1,14 @@
+import scala.scalanative.build._
+
 ThisBuild / version := "0.1.0-SNAPSHOT"
-ThisBuild / scalaVersion := "2.13.8"
-ThisBuild / resolvers +=
-  "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
-val scafiVersion = "0.3.3+334-8d4e68d5-SNAPSHOT"
+ThisBuild / scalaVersion := "2.12.14"
+
+// Set to false or remove if you want to show stubs as linking errors
+nativeLinkStubs := false
+
+
 lazy val root = (project in file("."))
   .settings(
     name := "scafi-benchmark",
-    libraryDependencies ++= Seq(
-      "it.unibo.scafi" %% "scafi-core" % scafiVersion,
-      "it.unibo.scafi" %% "scafi-simulator" % scafiVersion
-    )
-  )
+    libraryDependencies += "io.github.cquiroz" %%% "scala-java-time" % "2.4.0-M1"
+  ).enablePlugins(ScalaNativePlugin)

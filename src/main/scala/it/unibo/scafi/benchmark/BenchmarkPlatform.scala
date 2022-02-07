@@ -9,10 +9,8 @@ object BenchmarkPlatform extends App {
     GridSettings(howMany, howMany, range, range),
     range
   )
-  val program = new RepCheck // find a way to pass program as arguments
-  // Count the execution time, check if some framework exists
-  val startingTime =
-    System.currentTimeMillis() // Todo, this is not the correct way to benchmark time, verify if exists some lib
+  val program = new StaticFieldCheck // find a way to pass program as arguments
+  val startingTime = System.currentTimeMillis()
   (0 to ticks) foreach { _ => simulator.exec(program) }
   println(s"Execution time: ${System.currentTimeMillis() - startingTime}")
 }
